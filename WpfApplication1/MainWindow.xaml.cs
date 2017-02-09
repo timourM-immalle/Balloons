@@ -64,7 +64,7 @@ namespace WpfApplication1
 
         private void fillButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Balloon's'.Fill() veranderen
         }
     }
 }
