@@ -22,7 +22,7 @@ namespace WpfApplication1
 
         static Random rndGen = new Random();
 
-        public Balloon(Canvas canvas)
+        public Balloon(Canvas canvas, string naam, Brush kleur)
         {
             diameter = rndGen.Next(10, 30);
             x = rndGen.Next(10, 300);
