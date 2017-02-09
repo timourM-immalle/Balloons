@@ -22,15 +22,22 @@ namespace WpfApplication1
     {
         List<Balloon> balloons = new List<Balloon>();
 
+        private void MainWindowActies()
+        {
+            Random rnd = new Random();
+
+            for (var i = 0; i < 100; i++)
+            {
+                Balloon newBalloon = new Balloon(canvas, rnd.Next(10, 50), rnd.Next(10, 500), rnd.Next(10, 500));
+                balloons.Add(newBalloon);
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
 
-            for(var i = 0; i<100; i++)
-            {
-                Balloon newBalloon = new Balloon(canvas, 20, 100);
-                balloons.Add(newBalloon);
-            }
+            MainWindowActies();
         }
 
         private void growButton_Click(object sender, RoutedEventArgs e)
@@ -47,6 +54,12 @@ namespace WpfApplication1
             {
                 b.Move();
             }
+        }
+
+        private void btnInit_Click(object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Clear();
+            MainWindowActies();
         }
     }
 }

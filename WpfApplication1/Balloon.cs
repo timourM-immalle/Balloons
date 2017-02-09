@@ -20,31 +20,20 @@ namespace WpfApplication1
 
         Ellipse ellipse = new Ellipse();
 
-        static Random rndGen = new Random();
-
-        public Balloon(Canvas canvas, string naam, Brush kleur)
+        public Balloon(Canvas canvas, string naam, Brush kleur, int d, int xCo, int yCo)
         {
-            diameter = rndGen.Next(10, 30);
-            x = rndGen.Next(10, 300);
-            y = rndGen.Next(10, 200);
+            diameter = d;
+            x = xCo;
+            y = yCo;
 
             UpdateEllipse(canvas);
         }
 
-        public Balloon(Canvas canvas, int diameter)
+        public Balloon(Canvas canvas, int diameter, int xCo, int yCo)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10, 300);
-            y = rndGen.Next(10, 200);
-
-            UpdateEllipse(canvas);
-        }
-
-        public Balloon(Canvas canvas, int diameter, int height)
-        {
-            this.diameter = diameter;
-            x = rndGen.Next(10, 300);
-            y = height;
+            x = xCo;
+            y = yCo;
 
             UpdateEllipse(canvas);
         }
