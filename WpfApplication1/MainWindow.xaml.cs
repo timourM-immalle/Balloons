@@ -28,7 +28,7 @@ namespace WpfApplication1
 
             for (var i = 0; i < 100; i++)
             {
-                Balloon newBalloon = new Balloon(canvas, rnd.Next(10, 50), rnd.Next(10, 500), rnd.Next(10, 500));
+                Balloon newBalloon = new Balloon(canvas, rnd.Next(10, 50), rnd.Next(10, 500), rnd.Next(10, 500), "Wodka");
                 balloons.Add(newBalloon);
             }
         }
@@ -60,6 +60,11 @@ namespace WpfApplication1
         {
             canvas.Children.Clear();
             MainWindowActies();
+        }
+
+        private void fillButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
