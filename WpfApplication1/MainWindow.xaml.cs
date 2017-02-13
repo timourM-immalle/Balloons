@@ -26,7 +26,7 @@ namespace WpfApplication1
         {
             Random rnd = new Random();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 10; i++)
             {
                 Balloon newBalloon = new Balloon(canvas, rnd.Next(10, 50), rnd.Next(10, 500), rnd.Next(10, 500), "Wodka");
                 balloons.Add(newBalloon);
@@ -64,7 +64,12 @@ namespace WpfApplication1
 
         private void fillButton_Click(object sender, RoutedEventArgs e)
         {
-            //Balloon's'.Fill() veranderen
+            //Balloon's'.Fill();
+
+            foreach (var b in balloons)
+            {
+                b.Opvulkleur = Brushes.Yellow;
+            }
         }
     }
 }

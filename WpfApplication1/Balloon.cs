@@ -21,6 +21,7 @@ namespace WpfApplication1
 
         private Brush kleur;
 
+        //Canvas canvas;
         Ellipse ellipse = new Ellipse();
         Random rndFill = new Random();
         TextBlock txt = new TextBlock();
@@ -43,10 +44,10 @@ namespace WpfApplication1
             ballonTekst = tekst;
 
             UpdateEllipse(canvas);
-            UpdateText(ballonTekst);
+            //UpdateText(ballonTekst);
         }
 
-        void UpdateEllipse(Canvas canvas)
+        private void UpdateEllipse(Canvas canvas)
         {
             ellipse.Width = diameter;
             ellipse.Height = diameter;
@@ -56,14 +57,13 @@ namespace WpfApplication1
             canvas.Children.Add(ellipse);
         }
 
-        void UpdateText(string tekst)
+        private void UpdateText()
         {
-            txt.Text = tekst;
+            txt.Text = ballonTekst;
             txt.Margin = ellipse.Margin;
-            txt.Background = new SolidColorBrush(Colors.Blue);
         }
 
-        void UpdateColor()
+        private void UpdateColor()
         {
             ellipse.Fill = new SolidColorBrush(Color.FromRgb(Convert.ToByte(rndFill.Next(255)), Convert.ToByte(rndFill.Next(255)), Convert.ToByte(rndFill.Next(255))));
         }
@@ -81,10 +81,13 @@ namespace WpfApplication1
             ellipse.Margin = new Thickness(x, y, 0, 0);
         }
 
-        //public Brush Opvulkleur
-        //{
-        //    get { return kleur; }
-        //    set { kleur = value;  UpdateColor(); }
-        //}
+        public Brush Opvulkleur
+        {
+            set
+            {
+                kleur = value;
+                UpdateColor();
+            }
+        }
     }
 }
