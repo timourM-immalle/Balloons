@@ -17,16 +17,17 @@ namespace WpfApplication1
         private int x = 10;
         private int y = 100;
         private int diameter = 10;
+
         private string ballonTekst;
 
-        private Brush kleur;
-
+        public Brush kleur;
         //Canvas canvas;
+
         Ellipse ellipse = new Ellipse();
         Random rndFill = new Random();
         TextBlock txt = new TextBlock();
 
-        public Balloon(Canvas canvas, string naam, Brush kleur, int d, int xCo, int yCo, string tekst)
+        public Balloon(Canvas canvas, int xCo, int yCo, string tekst, string naam, Brush kleur, int d = 10)
         {
             diameter = d;
             x = xCo;
@@ -36,21 +37,21 @@ namespace WpfApplication1
             UpdateEllipse(canvas);
         }
 
-        public Balloon(Canvas canvas, int diameter, int xCo, int yCo, string tekst)
+        public Balloon(Canvas canvas, int xCo, int yCo, string tekst, int diameter = 10)
         {
             this.diameter = diameter;
             x = xCo;
             y = yCo;
-            ballonTekst = tekst;
+            //ballonTekst = tekst;
 
             UpdateEllipse(canvas);
-            //UpdateText(ballonTekst);
+            //UpdateText(tekst);
         }
 
         private void UpdateEllipse(Canvas canvas)
         {
             ellipse.Width = diameter;
-            ellipse.Height = diameter;
+            ellipse.Height = ellipse.Width;
             ellipse.Margin = new Thickness(x, y, 0, 0);
             ellipse.Stroke = new SolidColorBrush(Colors.Red);
             ellipse.Fill = new SolidColorBrush(Color.FromRgb(Convert.ToByte(rndFill.Next(255)), Convert.ToByte(rndFill.Next(255)), Convert.ToByte(rndFill.Next(255))));
@@ -63,7 +64,7 @@ namespace WpfApplication1
             txt.Margin = ellipse.Margin;
         }
 
-        private void UpdateColor()
+        public void UpdateColor()
         {
             ellipse.Fill = new SolidColorBrush(Color.FromRgb(Convert.ToByte(rndFill.Next(255)), Convert.ToByte(rndFill.Next(255)), Convert.ToByte(rndFill.Next(255))));
         }
@@ -72,7 +73,7 @@ namespace WpfApplication1
         {
             diameter += 10;
             ellipse.Width = diameter;
-            ellipse.Height = diameter;
+            ellipse.Height = ellipse.Width;
         }
 
         public void Move()
@@ -85,7 +86,6 @@ namespace WpfApplication1
         {
             set
             {
-                kleur = value;
                 UpdateColor();
             }
         }

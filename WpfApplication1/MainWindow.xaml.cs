@@ -26,9 +26,9 @@ namespace WpfApplication1
         {
             Random rnd = new Random();
 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 100; i++)
             {
-                Balloon newBalloon = new Balloon(canvas, rnd.Next(10, 50), rnd.Next(10, 500), rnd.Next(10, 500), "Wodka");
+                Balloon newBalloon = new Balloon(canvas, rnd.Next(10, 500), rnd.Next(10, 500), "Wodka", rnd.Next(10, 50));
                 balloons.Add(newBalloon);
             }
         }
@@ -42,7 +42,7 @@ namespace WpfApplication1
 
         private void growButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach(var b in balloons)
+            foreach (Balloon b in balloons)
             {
                 b.Grow();
             }
@@ -50,7 +50,7 @@ namespace WpfApplication1
 
         private void moveButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var b in balloons)
+            foreach (Balloon b in balloons)
             {
                 b.Move();
             }
@@ -59,6 +59,8 @@ namespace WpfApplication1
         private void btnInit_Click(object sender, RoutedEventArgs e)
         {
             canvas.Children.Clear();
+            balloons.Clear();
+
             MainWindowActies();
         }
 
@@ -66,9 +68,9 @@ namespace WpfApplication1
         {
             //Balloon's'.Fill();
 
-            foreach (var b in balloons)
+            foreach (Balloon b in balloons)
             {
-                b.Opvulkleur = Brushes.Yellow;
+                b.UpdateColor();
             }
         }
     }
