@@ -68,10 +68,19 @@ namespace WpfApplication1
         {
             //Balloon's'.Fill();
 
+            //foreach (Balloon b in balloons)
+            //{
+            //    //b.UpdateColor();
+            //}
+
+            int balloonTeller = 0;
+
             foreach (Balloon b in balloons)
             {
-                b.UpdateColor();
+                balloonTeller++;
             }
+
+            //for (int i = 0; i <= balloonTeller; i++)
         }
     }
 }
